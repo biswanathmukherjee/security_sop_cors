@@ -1,0 +1,170 @@
+<HTML>
+	<head>
+		<title>Application 1</title>
+	</head>
+	<BODY>
+		<SCRIPT>
+			// Create the XHR object.
+			function createCORSRequest(method, url) {
+			  var xhr = new XMLHttpRequest();
+			  if ("withCredentials" in xhr) {
+				// XHR for Chrome/Firefox/Opera/Safari.
+				xhr.open(method, url, true);
+			  } else if (typeof XDomainRequest != "undefined") {
+				// XDomainRequest for IE.
+				xhr = new XDomainRequest();
+				xhr.open(method, url);
+			  } else {
+				// CORS not supported.
+				xhr = null;
+			  }
+			  return xhr;
+			}
+
+			// Helper method to parse the title tag from the response.
+			function getTitle(text) {
+			  return text.match('<title>(.*)?</title>')[1];
+			}
+
+			// Make the actual SOP request.
+			function makeSOPRequest() {
+			  // This is a sample server that supports CORS.
+			  //var url = 'http://html5rocks-cors.s3-website-us-east-1.amazonaws.com/index.html';
+			  //var url = 'https://in.yahoo.com/?p=us';
+			  //var url = 'http://localhost:8082/index.html';
+			  //var url = 'https://codepen.io/anon/pen/RPBgmE.html';
+			  //var url = 'http://localhost:8080/greeting';
+			  var url = 'http://localhost:7001/AppY/indexY.html';
+			  //var url = 'http://localhost:8082/weather';
+
+			  var xhr = createCORSRequest('GET', url);
+			  if (!xhr) {
+				alert('SOP not supported');
+				return;
+			  }
+			  else{
+				alert('SOP supported!!!!');
+			  }
+
+			  // Response handlers.
+			  xhr.onload = function() {
+				var text = xhr.responseText;
+				var title = getTitle(text);
+				alert('Response from SOP request to ' + url + ': ' + title);
+			  };
+
+			  xhr.onerror = function() {
+				alert('Woops, there was an error making the request.');
+			  };
+				alert('Sending the request to ' + url + '!!!!');
+			  xhr.send();
+			}
+			
+			// Make the actual CORS request.
+			function makeCorsWeatherRequest() {
+			  // This is a sample server that supports CORS.
+			  //var url = 'http://html5rocks-cors.s3-website-us-east-1.amazonaws.com/index.html';
+			  //var url = 'https://in.yahoo.com/?p=us';
+			  //var url = 'http://localhost:8082/index.html';
+			  //var url = 'https://codepen.io/anon/pen/RPBgmE.html';
+			  //var url = 'http://localhost:8080/greeting';
+			  //var url = 'http://localhost:7001/AppY/indexY.html';
+			  var url = 'http://localhost:8082/weather';
+
+			  var xhr = createCORSRequest('GET', url);
+			  if (!xhr) {
+				alert('CORS not supported');
+				return;
+			  }
+			  else{
+				alert('CORS supported!!!!');
+			  }
+
+			  // Response handlers.
+			  xhr.onload = function() {
+				var text = xhr.responseText;
+				var title = getTitle(text);
+				alert('Response from CORS request to ' + url + ': ' + title);
+			  };
+
+			  xhr.onerror = function() {
+				alert('Woops, there was an error making the request.');
+			  };
+				alert('Sending the request to ' + url + '!!!!');
+			  xhr.send();
+			}
+
+			// Make the actual CORS request.
+			function makeCorsContactUsRequest() {
+			  // This is a sample server that supports CORS.
+			  //var url = 'http://html5rocks-cors.s3-website-us-east-1.amazonaws.com/index.html';
+			  //var url = 'https://in.yahoo.com/?p=us';
+			  //var url = 'http://localhost:8082/index.html';
+			  //var url = 'https://codepen.io/anon/pen/RPBgmE.html';
+			  //var url = 'http://localhost:8080/greeting';
+			  //var url = 'http://localhost:7001/AppY/indexY.html';
+			  var url = 'http://localhost:8082/contactUs';
+
+			  var xhr = createCORSRequest('GET', url);
+			  if (!xhr) {
+				alert('CORS not supported');
+				return;
+			  }
+			  else{
+				alert('CORS supported!!!!');
+			  }
+
+			  // Response handlers.
+			  xhr.onload = function() {
+				var text = xhr.responseText;
+				var title = getTitle(text);
+				alert('Response from CORS request to ' + url + ': ' + title);
+			  };
+
+			  xhr.onerror = function() {
+				alert('Woops, there was an error making the request.');
+			  };
+				alert('Sending the request to ' + url + '!!!!');
+			  xhr.send();
+			}
+			
+			// Make the actual CORS request.
+			function makeCorsAccountInfoRequest() {
+			  // This is a sample server that supports CORS.
+			  //var url = 'http://html5rocks-cors.s3-website-us-east-1.amazonaws.com/index.html';
+			  //var url = 'https://in.yahoo.com/?p=us';
+			  //var url = 'http://localhost:8082/index.html';
+			  //var url = 'https://codepen.io/anon/pen/RPBgmE.html';
+			  //var url = 'http://localhost:8080/greeting';
+			  //var url = 'http://localhost:7001/AppY/indexY.html';
+			  var url = 'http://localhost:8082/accountInfo';
+
+			  var xhr = createCORSRequest('GET', url);
+			  if (!xhr) {
+				alert('CORS not supported');
+				return;
+			  }
+			  else{
+				alert('CORS supported!!!!');
+			  }
+
+			  // Response handlers.
+			  xhr.onload = function() {
+				var text = xhr.responseText;
+				var title = getTitle(text);
+				alert('Response from CORS request to ' + url + ': ' + title);
+			  };
+
+			  xhr.onerror = function() {
+				alert('Woops, there was an error making the request.');
+			  };
+				alert('Sending the request to ' + url + '!!!!');
+			  xhr.send();
+			}
+		</SCRIPT>
+		<P align="center" style="font-size: 20px;"><A onclick="makeCorsWeatherRequest(); return false;" href="https://www.google.com/#">Run CORS Weather Request</A> </P>
+		<P align="center" style="font-size: 20px;"><A onclick="makeCorsContactUsRequest(); return false;" href="https://www.google.com/#">Run CORS ContactUs Request</A> </P>
+		<P align="center" style="font-size: 20px;"><A onclick="makeCorsAccountInfoRequest(); return false;" href="https://www.google.com/#">Run CORS AccountInfo Request</A> </P>
+		<P align="center" style="font-size: 20px;"><A onclick="makeSOPRequest(); return false;" href="https://www.google.com/#">Run SOP Request</A> </P>
+	</BODY>
+</HTML>
